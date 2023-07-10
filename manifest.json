@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "SRT bot",
+  "version": "1.0",
+  "description": "A simple Chrome extension.",
+  "action": {
+    "default_popup": "site.html"
+  },
+  "permissions": [
+    "activeTab",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}
