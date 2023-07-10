@@ -3,98 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <title>My Chrome Extension Popup</title>
-  <style>
-    /* Add your CSS styles here */
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      min-width: 250px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 5px;
-      margin-bottom: 10px;
-    }
-
-    button {
-      padding: 8px 16px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .yes-button.active {
-      background-color: #28a745;
-    }
-
-    .no-button.active {
-      background-color: #dc3545;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>My Chrome Extension Popup</h1>
 
-  <label for="reason">If any of the documents submitted are not accepted, state the reason:</label>
-  <input type="text" id="reason">
-
-  <label for="website">Is the website functional?</label>
-  <div>
-    <button class="yes-button">Yes</button>
-    <button class="no-button">No</button>
+  <div id="reasonDiv" class="visible">
+    <label for="reason">If any of the documents submitted are not accepted, state the reason:</label>
+    <input type="text" id="reason">
+    <label for="website">Is the website functional?</label>
+    <div>
+      <button id="yes-website" class="yes-button">Yes</button>
+      <button id="no-website" class="no-button">No</button>
+    </div>
+  </div>
+  
+  <div id="legalDiv" class="invisible">
+    <label for="url">URL please:</label>
+    <input type="text" id="url">
+    <label for="legal-name">Is the business legal name present on the website?</label>
+    <div>
+      <button id="yes-legal-name" class="yes-button">Yes</button>
+      <button id="no-legal-name" class="no-button">No</button>
+    </div>
   </div>
 
-  <label for="url">URL please:</label>
-  <input type="text" id="url">
-
-  <label for="legal-name">Is the business legal name present on the website?</label>
-  <div>
-    <button class="yes-button">Yes</button>
-    <button class="no-button">No</button>
+  <div id="misleadingDiv" class="invisible">
+    <label for="tab">On which website tab was the business legal name mentioned?</label>
+    <input type="text" id="tab">
+    <label for="misinformation">Are there any false or misleading information?</label>
+    <div>
+      <button id="yes-misinformation" class="yes-button">Yes</button>
+      <button id="no-misinformation" class="no-button">No</button>
+    </div>
   </div>
 
-  <label for="tab">On which website tab was the business legal name mentioned?</label>
-  <input type="text" id="tab">
-
-  <label for="misinformation">Are there any false or misleading information?</label>
-  <div>
-    <button class="yes-button">Yes</button>
-    <button class="no-button">No</button>
+  <div id="signals" class="invisible">
+    <label for="weak-signals">Weak Signals (provide 2 key signals):</label>
+    <input type="text" id="weak-signals">
+    <label for="strong-signal">Strong Signal (provide 1 key signal):</label>
+    <input type="text" id="strong-signal">
+  </div>  
+  <div class="generate">
+    <button id="generate">Generate and Copy</button>
   </div>
-
-  <label for="weak-signals">Weak Signals (provide 2 key signals):</label>
-  <input type="text" id="weak-signals">
-
-  <label for="strong-signal">Strong Signal (provide 1 key signal):</label>
-  <input type="text" id="strong-signal">
-
-  <button id="generate">Generate and Copy</button>
-
-  <script src="main.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const buttons = document.querySelectorAll('.yes-button, .no-button');
-
-      buttons.forEach(button => {
-        button.addEventListener('click', function () {
-          const siblingButtons = this.parentNode.querySelectorAll('.yes-button, .no-button');
-
-          siblingButtons.forEach(siblingButton => {
-            siblingButton.classList.remove('active');
-          });
-
-          this.classList.add('active');
-        });
-      });
-    });
-  </script>
+  
+  <script src="script.js"></script>
 </body>
 </html>
